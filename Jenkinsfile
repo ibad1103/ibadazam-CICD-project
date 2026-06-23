@@ -7,9 +7,9 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/ibad1103/ibadazam-CICD-project.git'
+                checkout scm
             }
         }
 
@@ -39,7 +39,7 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
+        stage('Push Image') {
             steps {
                 bat 'docker push %IMAGE_NAME%:%BUILD_NUMBER%'
             }
