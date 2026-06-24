@@ -25,20 +25,19 @@ pipeline {
             }
         }
 
-        stage('Docker Login Test') {
-    steps {
-        withCredentials([usernamePassword(
-            credentialsId: 'dockerhub',
-            usernameVariable: 'USERNAME',
-            passwordVariable: 'PASSWORD'
-        )]) {
-            bat '''
-            echo Username=%USERNAME%
-            powershell -command "$env:PASSWORD.Length"
-            '''
+        stage('Docker Login') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub',
+                    usernameVariable: 'USERNAME',
+                    passwordVariable: 'PASSWORD'
+                )]) {
+                    bat '''
+                    echo %PASSWORD% | docker login -u %USERNAME% --password-stdin
+                    '''
+                }
+            }
         }
-    }
-}
 
         stage('Push Image') {
             steps {
