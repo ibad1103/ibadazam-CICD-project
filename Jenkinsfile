@@ -33,7 +33,7 @@ pipeline {
                     passwordVariable: 'PASSWORD'
                 )]) {
                     bat '''
-                    echo %PASSWORD% | docker login -u %USERNAME% --password-stdin
+                    echo Username=%USERNAME%
                     '''
                 }
             }
