@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "ibad1103/ibadazam-cicd-project"
+        IMAGE_NAME = "ibadzm/ibadazam-cicd-project"
     }
 
     stages {
